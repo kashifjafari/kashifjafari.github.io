@@ -610,7 +610,7 @@ footer{padding:36px 0 44px;display:flex;justify-content:space-between;flex-wrap:
     return window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
   }
   themeBtn.addEventListener('click',function(){
-    var next=currentTheme()==='dark'?'light':'dark';
+    var next=currentTheme()==='light'?'light':'dark';
     doc.setAttribute('data-theme',next);
     try{localStorage.setItem('sk-theme',next);}catch(e){}
   });
