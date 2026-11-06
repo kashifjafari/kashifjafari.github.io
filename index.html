@@ -597,8 +597,29 @@ footer{padding:36px 0 44px;display:flex;justify-content:space-between;flex-wrap:
 </nav>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
 <script>
+document.addEventListener("DOMContentLoaded", async function () {
+    const counter = document.getElementById("visit-count");
+
+    if (!counter) return;
+
+    try {
+        const response = await fetch(
+            "https://api.counterapi.dev/v1/YOUR_NAMESPACE/YOUR_COUNTER/up"
+        );
+
+        if (!response.ok) throw new Error("Counter unavailable");
+
+        const data = await response.json();
+        counter.textContent = data.count.toLocaleString();
+    } catch (error) {
+        counter.textContent = "Unavailable";
+        console.error("Visit counter error:", error);
+    }
+});
+</script>
+<script>
+  
   
 (function(){
   var doc=document.documentElement;
